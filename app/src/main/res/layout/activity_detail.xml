@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailActivity">
+
+
+    <include
+        android:id="@+id/toolBar"
+        layout="@layout/tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1DA1F2" />
+
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/toolBar"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+
+    <TextView
+        android:id="@+id/txName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolBar"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@id/image"
+        android:textColor="@android:color/black"
+        android:text="TextView"
+        android:textSize="18sp"
+        tools:text="Sabrina" />
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txName"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="3dp"
+        android:layout_toEndOf="@+id/image"
+        android:textColor="@android:color/black"
+        android:text="TextView"
+        tools:text="jbourdeau"
+        android:textSize="18sp"/>
+
+
+    <TextView
+        android:id="@+id/txBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/userName"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:autoLink="all"
+        android:linksClickable="true"
+        android:text="TextView"
+        android:textColor="@android:color/black"
+        tools:text="This is my tweet!" />
+
+    <ImageView
+        android:id="@+id/ivImage1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txBody"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:visibility="gone"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <TextView
+        android:id="@+id/date1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txBody"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        tools:text="16h 15 mn" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/date1"
+        android:layout_marginTop="15dp"
+        android:background="?android:attr/listDivider" />
+
+    <LinearLayout
+        android:id="@+id/vectorContainer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text=" 12 favorite" />
+
+        <TextView
+            android:id="@+id/data1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:text="12 retweet" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/vectorContainer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/vectorContainer1"
+        android:layout_toEndOf="@id/image"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/ic_comment"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/txBody"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="8dp"
+            android:drawablePadding="8dp"
+            android:text="12"
+            app:drawableLeftCompat="@drawable/comment_outline"
+
+            />
+
+        <TextView
+            android:id="@+id/ic_repeat"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/txBody"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@id/ic_comment"
+            android:drawablePadding="8dp"
+            android:text="12"
+            app:drawableLeftCompat="@drawable/repeat_variant" />
+
+        <TextView
+            android:id="@+id/ic_heart"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/txBody"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@id/ic_repeat"
+            android:drawablePadding="8dp"
+            android:text="12"
+            app:drawableLeftCompat="@drawable/cards_heart_outline" />
+
+        <TextView
+            android:id="@+id/ic_share"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/txBody"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@id/ic_heart"
+            android:drawablePadding="8dp"
+            android:text="12"
+            app:drawableLeftCompat="@drawable/share_variant" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/vectorContainer1"
+        android:background="?android:attr/listDivider" />
+
+
+
+</RelativeLayout>
