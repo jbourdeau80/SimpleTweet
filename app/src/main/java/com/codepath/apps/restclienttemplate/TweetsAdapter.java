@@ -83,7 +83,12 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
        TextView tvBody;
        TextView tvScreenName;
        TextView date;
-      // TextView date1;
+       TextView ivimage;
+       TextView ic_heart;
+       TextView ic_heart1;
+       TextView ic_repeat;
+       TextView ic_repeat2;
+
 
        public ViewHolder(@NonNull View itemView ,final OnItemClickListener clickListener) {
            super(itemView);
@@ -92,7 +97,14 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
            tvScreenName = itemView.findViewById(R.id.tvScreenName);
            container = itemView.findViewById(R.id.container);
             date = itemView.findViewById(R.id.date);
-          //  date1 = itemView.findViewById(R.id.date1);
+            ic_heart = itemView.findViewById(R.id.ic_heart);
+            ic_heart1 = itemView.findViewById(R.id.ic_heart1);
+            ic_repeat = itemView.findViewById(R.id.ic_repeat);
+            ic_repeat2 = itemView.findViewById(R.id.ic_repeat2);
+
+
+
+
 
        }
 
@@ -103,7 +115,65 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
            date.setText(Tweet.getFormattedTime1(tweet.createdAt));
 
 
+           if(tweet.favorite){
+               ic_heart.setVisibility(View.INVISIBLE);
+               ic_heart1.setVisibility(View.VISIBLE);
+           }
+           else{
+               ic_heart.setVisibility(View.VISIBLE);
+               ic_heart1.setVisibility(View.INVISIBLE);
+           }
+           if(tweet.favorite){
+               ic_repeat.setVisibility(View.INVISIBLE);
+               ic_repeat2.setVisibility(View.VISIBLE);
+           }
+           else {
+               ic_repeat.setVisibility(View.VISIBLE);
+               ic_repeat2.setVisibility(View.INVISIBLE);
+           }
+
+
+
+
            Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
+
+            ic_heart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    tweet.count_favorite++;
+                    ic_heart.setVisibility(View.INVISIBLE);
+                    ic_heart1.setVisibility(View.VISIBLE);
+                    ic_heart1.setText(tweet.getCount_favorite());
+                    tweet.favorite = true;
+                }
+            });
+
+           ic_heart1.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View view) {
+                   tweet.count_favorite--;
+                   ic_heart.setVisibility(View.VISIBLE);
+                   ic_heart1.setVisibility(View.INVISIBLE);
+                   ic_heart.setText(tweet.getCount_favorite());
+                   tweet.favorite = false;
+               }
+           });
+
+           ic_repeat2.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View view) {
+                 tweet.count_retweet--;
+                 ic_repeat.setVisibility(View.INVISIBLE);
+                 ic_repeat2.setVisibility(View.INVISIBLE);
+
+                 ic_repeat.setText(tweet.getCount_retweet());
+                tweet.favorite = false;
+               }
+           });
+
+
+
+
 
            container.setOnClickListener(new View.OnClickListener() {
 

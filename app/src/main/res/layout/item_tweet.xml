@@ -5,9 +5,8 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="5dp"
     android:layout_margin="5dp"
-   >
+    android:layout_marginStart="5dp">
 
     <ImageView
         android:id="@+id/ivprofileImage"
@@ -28,7 +27,6 @@
         android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/ivprofileImage"
         android:textColor="@android:color/black"
-        android:text="TextView"
         tools:text="Sabrina" />
 
     <TextView
@@ -36,10 +34,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="-50dp"
-        android:layout_marginTop="24dp"
-        android:layout_toEndOf="@id/tvScreenName"
-        android:text="TextView"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="2dp"
+        android:layout_toEndOf="@+id/tvScreenName"
         android:textColor="@android:color/black"
         tools:text="jbourdeau" />
 
@@ -54,16 +51,15 @@
         android:autoLink="all"
         android:linksClickable="true"
         android:textColor="@android:color/black"
-        android:text="TextView"
         tools:text="This is my tweet!!" />
 
     <ImageView
-        android:id="@+id/ivImage"
-        android:layout_width="450dp"
-        android:layout_height="300dp"
+        android:id="@+id/ivimage"
+        android:layout_width="400dp"
+        android:layout_height="250dp"
         android:layout_below="@id/tvBody"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="5dp"
         android:layout_toEndOf="@id/ivprofileImage"
         android:visibility="gone"
@@ -74,82 +70,76 @@
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/username"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:layout_toEndOf="@+id/username"
         android:textSize="16sp"
         tools:text="16h" />
 
-    <LinearLayout
-        android:id="@+id/vectorContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ivImage"
+    <TextView
+        android:id="@+id/ic_repeat"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/tvBody"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/ivprofileImage"
-        android:orientation="horizontal">
+        android:drawablePadding="8dp"
+        app:drawableLeftCompat="@drawable/repeat_variant" />
 
+    <TextView
+        android:id="@+id/ic_repeat2"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/tvBody"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/ivprofileImage"
+        android:drawablePadding="8dp"
+        app:drawableLeftCompat="@drawable/repeat" />
 
-        <TextView
-            android:id="@+id/ic_comment"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:layout_below="@id/tvBody"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="3dp"
-            android:drawablePadding="8dp"
-            android:text="1"
-            app:drawableLeftCompat="@drawable/comment_outline"
+    <TextView
+        android:id="@+id/ic_heart"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@id/tvBody"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@id/ic_repeat2"
+        android:drawablePadding="8dp"
+        app:drawableLeftCompat="@drawable/cards_heart_outline" />
 
-            />
+    <TextView
+        android:id="@+id/ic_heart1"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@id/tvBody"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@id/ic_repeat2"
+        android:drawablePadding="8dp"
+        app:drawableLeftCompat="@drawable/cards_heart" />
 
-        <TextView
-            android:id="@+id/ic_repeat"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:layout_below="@id/tvBody"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="3dp"
-            android:layout_toEndOf="@id/ic_comment"
-            android:drawablePadding="8dp"
-            android:text="1"
-            app:drawableLeftCompat="@drawable/repeat_variant" />
-
-        <TextView
-            android:id="@+id/ic_heart"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:layout_below="@id/tvBody"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="3dp"
-            android:layout_toEndOf="@id/ic_repeat"
-            android:drawablePadding="8dp"
-            android:text="1"
-            app:drawableLeftCompat="@drawable/cards_heart_outline" />
-
-        <TextView
-            android:id="@+id/ic_share"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:layout_below="@id/tvBody"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="3dp"
-            android:layout_toEndOf="@id/ic_heart"
-            android:drawablePadding="8dp"
-            android:text="1"
-            app:drawableLeftCompat="@drawable/share_variant" />
-
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/ic_share"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/tvBody"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/ic_heart1"
+        android:drawablePadding="8dp"
+        app:drawableLeftCompat="@drawable/share_variant" />
 
     <View
         android:id="@+id/ic_divider"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_below="@id/vectorContainer"
         android:layout_marginStart="5dp"
+        android:layout_below="@id/ic_share"
         android:layout_marginTop="5dp"
-        android:background="?android:attr/listDivider"
-        />
+        android:background="?android:attr/listDivider" />
 
 
 </RelativeLayout>

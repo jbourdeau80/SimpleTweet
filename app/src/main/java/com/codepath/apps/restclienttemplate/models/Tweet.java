@@ -15,6 +15,11 @@ public class Tweet {
     public  String createdAt;
     public long id;
     public User user;
+    public boolean favorite;
+    public boolean retweet;
+    public int count_favorite;
+    public int count_retweet;
+
 
     public Tweet(){}
 
@@ -26,6 +31,10 @@ public class Tweet {
         tweet.createdAt = jsonObject.getString("created_at");
         tweet.id = jsonObject.getLong("id");
         tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
+        tweet.favorite = jsonObject.getBoolean("retweeted");
+        tweet.retweet = jsonObject.getBoolean("favorited");
+        tweet.count_favorite = jsonObject.getInt("favorite_count");
+        tweet.count_retweet = jsonObject.getInt("retweet_count");
         return tweet;
     }
 
@@ -51,6 +60,23 @@ public class Tweet {
 
     public User getUser() {
         return user;
+    }
+
+
+    public String getCount_favorite() {
+        return String.valueOf( count_favorite);
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public boolean isRetweet() {
+        return retweet;
+    }
+
+    public String getCount_retweet() {
+        return String .valueOf(count_retweet);
     }
 
     public static String getFormattedTime1(String createdAt) {

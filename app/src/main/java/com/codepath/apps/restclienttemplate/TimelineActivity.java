@@ -8,6 +8,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import androidx.appcompat.widget.Toolbar;
 
@@ -42,7 +44,7 @@ public class TimelineActivity extends AppCompatActivity {
          setSupportActionBar(toolbar);
 
         getSupportActionBar().setLogo(R.drawable.ic_twitter);
-        getSupportActionBar().setTitle(" ");
+        getSupportActionBar().setTitle("  Tweet");
 
 
          swipeContainer = findViewById(R.id.swipeContainer);
@@ -138,5 +140,12 @@ public class TimelineActivity extends AppCompatActivity {
                 Log.e(TAG,"onFailure!" + response,throwable);
             }
         });
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.add_menu, menu);
+        return true;
     }
 }
