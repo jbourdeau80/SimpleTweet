@@ -19,6 +19,7 @@ public class Tweet {
     public boolean retweet;
     public int count_favorite;
     public int count_retweet;
+    public Media media;
 
 
     public Tweet(){}
@@ -35,6 +36,7 @@ public class Tweet {
         tweet.retweet = jsonObject.getBoolean("favorited");
         tweet.count_favorite = jsonObject.getInt("favorite_count");
         tweet.count_retweet = jsonObject.getInt("retweet_count");
+        tweet.media = Media.fromJson(jsonObject.getJSONObject("entities"));
         return tweet;
     }
 

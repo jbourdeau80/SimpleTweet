@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
 import org.parceler.Parcels;
@@ -82,8 +83,9 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
        ImageView ivProfileImage;
        TextView tvBody;
        TextView tvScreenName;
+       TextView name;
        TextView date;
-       TextView ivimage;
+       ImageView ivimage;
        TextView ic_heart;
        TextView ic_heart1;
        TextView ic_repeat;
@@ -94,13 +96,15 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
            super(itemView);
            ivProfileImage = itemView.findViewById(R.id.ivprofileImage);
            tvBody = itemView.findViewById(R.id.tvBody);
-           tvScreenName = itemView.findViewById(R.id.tvScreenName);
+           tvScreenName = itemView.findViewById(R.id.ScreenName);
            container = itemView.findViewById(R.id.container);
             date = itemView.findViewById(R.id.date);
-            ic_heart = itemView.findViewById(R.id.ic_heart);
-            ic_heart1 = itemView.findViewById(R.id.ic_heart1);
+            ivimage = itemView.findViewById(R.id.ivimage);
+            ic_heart = itemView.findViewById(R.id.ic_heart2);
+            ic_heart1 = itemView.findViewById(R.id.ic_heart3);
             ic_repeat = itemView.findViewById(R.id.ic_repeat);
             ic_repeat2 = itemView.findViewById(R.id.ic_repeat2);
+            name = itemView.findViewById(R.id.tvName);
 
 
 
@@ -111,7 +115,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
 
        public void bind(Tweet tweet) {
            tvBody.setText(tweet.body);
-           tvScreenName.setText(tweet.user.screenName);
+           tvScreenName.setText("@"+tweet.user.screenName);
+           name.setText(tweet.user.name);
            date.setText(Tweet.getFormattedTime1(tweet.createdAt));
 
 
@@ -136,6 +141,13 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
 
 
            Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
+
+           if(!tweet.media.getMediaUrl().isEmpty()) {
+               ivimage.setVisibility(View.VISIBLE);
+               Glide.with(context)
+                       .load(tweet.media.getMediaUrl())
+                       .transform(new RoundedCorners(50)).into(ivimage);
+           }
 
             ic_heart.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -162,15 +174,27 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
            ic_repeat2.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View view) {
-                 tweet.count_retweet--;
-                 ic_repeat.setVisibility(View.INVISIBLE);
+                 tweet.count_favorite--;
+                 ic_repeat.setVisibility(View.VISIBLE);
                  ic_repeat2.setVisibility(View.INVISIBLE);
 
-                 ic_repeat.setText(tweet.getCount_retweet());
+                 ic_repeat.setText(tweet.getCount_favorite());
                 tweet.favorite = false;
                }
            });
 
+
+           ic_repeat.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View view) {
+                   tweet.count_favorite++;
+                   ic_repeat2.setVisibility(View.VISIBLE);
+                   ic_repeat.setVisibility(View.INVISIBLE);
+
+                   ic_repeat2.setText(tweet.getCount_favorite());
+                   tweet.favorite = true;
+               }
+           });
 
 
 

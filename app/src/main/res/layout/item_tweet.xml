@@ -19,7 +19,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tvScreenName"
+        android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -30,13 +30,13 @@
         tools:text="Sabrina" />
 
     <TextView
-        android:id="@+id/username"
+        android:id="@+id/ScreenName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="2dp"
-        android:layout_toEndOf="@+id/tvScreenName"
+        android:layout_toEndOf="@+id/tvName"
         android:textColor="@android:color/black"
         tools:text="jbourdeau" />
 
@@ -44,7 +44,7 @@
         android:id="@+id/tvBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/username"
+        android:layout_below="@id/ScreenName"
         android:layout_marginStart="5dp"
         android:layout_marginTop="8dp"
         android:layout_toEndOf="@+id/ivprofileImage"
@@ -53,18 +53,18 @@
         android:textColor="@android:color/black"
         tools:text="This is my tweet!!" />
 
+
     <ImageView
         android:id="@+id/ivimage"
         android:layout_width="400dp"
         android:layout_height="250dp"
         android:layout_below="@id/tvBody"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="3dp"
         android:layout_marginEnd="5dp"
         android:layout_toEndOf="@id/ivprofileImage"
         android:visibility="gone"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
 
     <TextView
         android:id="@+id/date"
@@ -72,65 +72,69 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="4dp"
-        android:layout_toEndOf="@+id/username"
+        android:layout_marginTop="1dp"
+        android:layout_toEndOf="@+id/ScreenName"
         android:textSize="16sp"
         tools:text="16h" />
-
-    <TextView
-        android:id="@+id/ic_repeat"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        android:layout_below="@id/tvBody"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="5dp"
-        android:layout_toEndOf="@id/ivprofileImage"
-        android:drawablePadding="8dp"
-        app:drawableLeftCompat="@drawable/repeat_variant" />
-
-    <TextView
-        android:id="@+id/ic_repeat2"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        android:layout_below="@id/tvBody"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="5dp"
-        android:layout_toEndOf="@id/ivprofileImage"
-        android:drawablePadding="8dp"
-        app:drawableLeftCompat="@drawable/repeat" />
-
-    <TextView
-        android:id="@+id/ic_heart"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_below="@id/tvBody"
-        android:layout_marginStart="95dp"
-        android:layout_marginTop="12dp"
-        android:layout_toEndOf="@id/ic_repeat2"
-        android:drawablePadding="8dp"
-        app:drawableLeftCompat="@drawable/cards_heart_outline" />
-
-    <TextView
-        android:id="@+id/ic_heart1"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_below="@id/tvBody"
-        android:layout_marginStart="95dp"
-        android:layout_marginTop="12dp"
-        android:layout_toEndOf="@id/ic_repeat2"
-        android:drawablePadding="8dp"
-        app:drawableLeftCompat="@drawable/cards_heart" />
 
     <TextView
         android:id="@+id/ic_share"
         android:layout_width="50dp"
         android:layout_height="30dp"
-        android:layout_below="@id/tvBody"
+        android:layout_below="@id/ivimage"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/ivprofileImage"
+        android:drawablePadding="8dp"
+        app:drawableLeftCompat="@drawable/reply" />
+
+
+    <TextView
+        android:id="@+id/ic_repeat"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/ivimage"
         android:layout_marginStart="95dp"
         android:layout_marginTop="5dp"
-        android:layout_toEndOf="@id/ic_heart1"
+        android:layout_toEndOf="@id/ic_share"
         android:drawablePadding="8dp"
-        app:drawableLeftCompat="@drawable/share_variant" />
+        app:drawableLeftCompat="@drawable/repeat_variant" />
+
+
+    <TextView
+        android:id="@+id/ic_repeat2"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/ivimage"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/ic_share"
+        android:drawablePadding="8dp"
+        app:drawableLeftCompat="@drawable/repeat" />
+
+    <TextView
+        android:id="@+id/ic_heart2"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@id/ivimage"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/ic_repeat"
+        android:drawablePadding="8dp"
+
+        app:drawableLeftCompat="@drawable/cards_heart_outline" />
+
+    <TextView
+        android:id="@+id/ic_heart3"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@id/ivimage"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/ic_repeat2"
+        android:drawablePadding="8dp"
+        app:drawableLeftCompat="@drawable/cards_heart" />
+
 
     <View
         android:id="@+id/ic_divider"

@@ -15,7 +15,6 @@
         android:layout_height="wrap_content"
         android:background="#1DA1F2" />
 
-
     <ImageView
         android:id="@+id/image"
         android:layout_width="50dp"
@@ -28,7 +27,7 @@
 
 
     <TextView
-        android:id="@+id/txName"
+        android:id="@+id/dtvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolBar"
@@ -36,7 +35,6 @@
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@id/image"
         android:textColor="@android:color/black"
-        android:text="TextView"
         android:textSize="18sp"
         tools:text="Sabrina" />
 
@@ -44,12 +42,10 @@
         android:id="@+id/userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txName"
-
+        android:layout_below="@id/dtvName"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/image"
-        android:text="TextView"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         tools:text="jbourdeau" />
@@ -60,7 +56,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/userName"
-        android:layout_toEndOf="@id/image"
         android:layout_marginStart="10dp"
         android:layout_marginTop="8dp"
         android:autoLink="all"
@@ -75,111 +70,117 @@
         android:layout_height="200dp"
         android:layout_below="@id/txBody"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         android:visibility="gone"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
 
     <TextView
         android:id="@+id/date1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/ivImage1"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="7dp"
         android:textSize="16sp"
+        android:layout_marginStart="10dp"
         tools:text="16h 15 mn" />
 
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_below="@id/ivImage1"
-        android:layout_marginTop="10dp"
+        android:layout_height="1dp"
+        android:layout_below="@id/date1"
+        android:layout_marginTop="3dp"
         android:background="?android:attr/listDivider" />
 
 
+    <TextView
+        android:id="@+id/favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/retweet"
+        tools:text=" 0 favorites" />
 
-        <TextView
-            android:id="@+id/favorite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="35dp"
-            android:text=" 12 favorite" />
+    <TextView
+        android:id="@+id/retweet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider"
+        android:layout_marginTop="5dp"
+        android:drawablePadding="8dp"
+        android:layout_marginStart="10dp"
+        tools:text=" 0 retweets" />
 
-        <TextView
-            android:id="@+id/retweet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="35dp"
-            android:text="12 retweet" />
+    <TextView
+        android:id="@+id/ic_share"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/divider1"
+        android:layout_toEndOf="@id/image"
+        android:layout_marginTop="5dp"
+        android:drawablePadding="8dp"
+        app:drawableLeftCompat="@drawable/reply"
+        tools:text=" 0 " />
 
 
     <TextView
-            android:id="@+id/ic_repeat"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:layout_below="@id/txBody"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
-            android:drawablePadding="8dp"
-            android:text="12"
-            app:drawableLeftCompat="@drawable/repeat_variant" />
+        android:id="@+id/ic_repeat"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/divider1"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/ic_share"
+        app:drawableLeftCompat="@drawable/repeat_variant"
+        tools:text=" 0"/>
 
-        <TextView
-            android:id="@+id/ic_repeat2"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:layout_below="@id/txBody"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
-            android:drawablePadding="8dp"
-            android:text="12"
-            app:drawableLeftCompat="@drawable/repeat" />
+    <TextView
+        android:id="@+id/ic_repeat2"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/divider1"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/ic_share"
+        android:drawablePadding="8dp"
+        app:drawableLeftCompat="@drawable/repeat"
+        tools:text=" 0 "/>
+
+    <TextView
+        android:id="@+id/ic_heart2"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/divider1"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/ic_repeat2"
+        android:drawablePadding="8dp"
+        app:drawableLeftCompat="@drawable/cards_heart_outline"
+        tools:text=" 0 "/>
+
+    <TextView
+        android:id="@+id/ic_heart3"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/divider1"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/ic_repeat2"
+        android:drawablePadding="8dp"
+        app:drawableLeftCompat="@drawable/cards_heart"
+        tools:text=" 0 " />
 
 
-        <TextView
-            android:id="@+id/ic_heart"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:layout_below="@id/txBody"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
-            android:layout_toEndOf="@id/ic_repeat2"
-            android:drawablePadding="8dp"
-            android:text="12"
-            app:drawableLeftCompat="@drawable/cards_heart_outline" />
-
-        <TextView
-            android:id="@+id/ic_heart1"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:layout_below="@id/txBody"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
-            android:layout_toEndOf="@id/ic_repeat2"
-            android:drawablePadding="8dp"
-            android:text="12"
-            app:drawableLeftCompat="@drawable/cards_heart" />
-
-        <TextView
-            android:id="@+id/ic_share"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:layout_below="@id/txBody"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
-            android:layout_toEndOf="@id/ic_heart1"
-            android:drawablePadding="8dp"
-            android:text="12"
-            app:drawableLeftCompat="@drawable/share_variant" />
-
-        <View
-            android:id="@+id/divider2"
+    <View
+            android:id="@+id/divider1"
             android:layout_width="match_parent"
             android:layout_height="1dp"
+        android:layout_marginTop="3dp"
+        android:layout_below="@id/retweet"
             android:background="?android:attr/listDivider" />
 
 
