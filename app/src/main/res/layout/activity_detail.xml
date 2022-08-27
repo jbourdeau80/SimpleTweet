@@ -116,7 +116,7 @@
         tools:text=" 0 retweets" />
 
     <TextView
-        android:id="@+id/ic_share"
+        android:id="@+id/reply"
         android:layout_width="50dp"
         android:layout_height="30dp"
         android:layout_below="@id/divider1"
@@ -134,7 +134,7 @@
         android:layout_below="@id/divider1"
         android:layout_marginStart="36dp"
         android:layout_marginTop="5dp"
-        android:layout_toEndOf="@id/ic_share"
+        android:layout_toEndOf="@id/reply"
         app:drawableLeftCompat="@drawable/repeat_variant"
         tools:text=" 0"/>
 
@@ -145,7 +145,7 @@
         android:layout_below="@id/divider1"
         android:layout_marginStart="36dp"
         android:layout_marginTop="5dp"
-        android:layout_toEndOf="@id/ic_share"
+        android:layout_toEndOf="@id/reply"
         android:drawablePadding="8dp"
         app:drawableLeftCompat="@drawable/repeat"
         tools:text=" 0 "/>
@@ -174,6 +174,21 @@
         app:drawableLeftCompat="@drawable/cards_heart"
         tools:text=" 0 " />
 
+    <TextView
+        android:id="@+id/share"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/divider1"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/ic_heart3"
+        android:drawablePadding="8dp"
+        app:drawableLeftCompat="@drawable/share_variant"
+
+        />
+
+
+
 
     <View
             android:id="@+id/divider1"
@@ -182,8 +197,6 @@
         android:layout_marginTop="3dp"
         android:layout_below="@id/retweet"
             android:background="?android:attr/listDivider" />
-
-
 
 
 </RelativeLayout>

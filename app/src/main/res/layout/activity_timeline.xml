@@ -40,6 +40,17 @@
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
             android:clipToPadding="true"/>
-
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        android:backgroundTint="#1DA1F2"
+        android:src="@drawable/ic_add_tweet"
+        app:layout_anchor="@id/rvTweets"
+        app:layout_anchorGravity="bottom|right|end" />
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

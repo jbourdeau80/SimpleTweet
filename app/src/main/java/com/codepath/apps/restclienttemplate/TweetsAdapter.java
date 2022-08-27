@@ -2,6 +2,7 @@ package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -90,6 +93,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
        TextView ic_heart1;
        TextView ic_repeat;
        TextView ic_repeat2;
+       TextView share;
+       TextView reply;
 
 
        public ViewHolder(@NonNull View itemView ,final OnItemClickListener clickListener) {
@@ -105,7 +110,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             ic_repeat = itemView.findViewById(R.id.ic_repeat);
             ic_repeat2 = itemView.findViewById(R.id.ic_repeat2);
             name = itemView.findViewById(R.id.tvName);
-
+            reply = itemView.findViewById(R.id.reply);
+            share = itemView.findViewById(R.id.share);
 
 
 
@@ -141,13 +147,13 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
 
 
            Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
-
-           if(!tweet.media.getMediaUrl().isEmpty()) {
-               ivimage.setVisibility(View.VISIBLE);
-               Glide.with(context)
-                       .load(tweet.media.getMediaUrl())
-                       .transform(new RoundedCorners(50)).into(ivimage);
-           }
+//
+//           if(!tweet.media.getMediaUrl().isEmpty()) {
+//               ivimage.setVisibility(View.VISIBLE);
+//               Glide.with(context)
+//                       .load(tweet.media.getMediaUrl())
+//                       .transform(new RoundedCorners(50)).into(ivimage);
+//           }
 
             ic_heart.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -196,6 +202,34 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                }
            });
 
+           share.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View view) {
+                   Intent i = new Intent(Intent.ACTION_SENDTO);
+                   i.setType("text/plain");
+                   i.putExtra(Intent.EXTRA_TEXT,tweet.getUrl());
+
+               }
+           });
+
+
+           reply.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View view) {
+                   showEditDialog1();
+               }
+
+               private void showEditDialog1() {
+                   FragmentManager fm = ((FragmentActivity) context).getSupportFragmentManager();
+
+                   ComposeDialogFragment composeDialogFragment = ComposeDialogFragment.newInstance("Some Title");
+                   Bundle bundle=new Bundle();
+                   bundle.putParcelable("userInfo",Parcels.wrap(TimelineActivity.user));
+                   composeDialogFragment.setArguments(bundle);
+                   composeDialogFragment.show(fm, "activity_compose_fragment");
+
+               }
+           });
 
 
 

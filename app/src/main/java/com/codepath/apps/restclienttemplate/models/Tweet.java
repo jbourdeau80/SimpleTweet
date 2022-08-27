@@ -1,5 +1,11 @@
 package com.codepath.apps.restclienttemplate.models;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -9,19 +15,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Parcel
-
+@Entity(foreignKeys = @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "userId"))
 public class Tweet {
-    public String body;
-    public  String createdAt;
+
+    @PrimaryKey
+    @ColumnInfo
     public long id;
+
+    @ColumnInfo
+    public String body;
+
+    @ColumnInfo
+    public  String createdAt;
+
+    @ColumnInfo
+    public Long userId;
+
+    @Ignore
     public User user;
+    @ColumnInfo
     public boolean favorite;
+    @ColumnInfo
     public boolean retweet;
+    @ColumnInfo
     public int count_favorite;
+    @ColumnInfo
     public int count_retweet;
+    @Ignore
     public Media media;
 
-
+    // empty constructor needed by parceler library
     public Tweet(){}
 
 
@@ -31,7 +54,9 @@ public class Tweet {
         tweet.body = jsonObject.getString("text");
         tweet.createdAt = jsonObject.getString("created_at");
         tweet.id = jsonObject.getLong("id");
-        tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
+        User user = User.fromJson(jsonObject.getJSONObject("user"));
+        tweet.user = user;
+        tweet.userId = user.id;
         tweet.favorite = jsonObject.getBoolean("retweeted");
         tweet.retweet = jsonObject.getBoolean("favorited");
         tweet.count_favorite = jsonObject.getInt("favorite_count");
@@ -87,5 +112,9 @@ public class Tweet {
 
     public static String getFormattedTime(String createdAt) {
         return TimeFormatter.getTimeStamp(createdAt);
+    }
+
+    public String getUrl() {
+        return  "https://twitter.com" +user.screenName+ "/status/"+id;
     }
 }

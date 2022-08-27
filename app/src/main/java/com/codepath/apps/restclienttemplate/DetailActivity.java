@@ -1,5 +1,7 @@
 package com.codepath.apps.restclienttemplate;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
@@ -29,6 +32,9 @@ public class DetailActivity extends AppCompatActivity {
     TextView heart1;
     TextView ic_repeat;
     TextView ic_repeat2;
+    TextView reply;
+    TextView share;
+    Context context;
 
 
     @Override
@@ -50,6 +56,8 @@ public class DetailActivity extends AppCompatActivity {
         heart1 = findViewById(R.id.ic_heart3);
         ic_repeat = findViewById(R.id.ic_repeat);
         ic_repeat2 = findViewById(R.id.ic_repeat2);
+        reply = findViewById(R.id.reply);
+        share = findViewById(R.id.share);
 
 
         txName.setText(tweet.getUser().getName());
@@ -130,7 +138,47 @@ public class DetailActivity extends AppCompatActivity {
         retweet.setText(tweet.count_retweet + " Retweets");
         favorite.setText(tweet.count_favorite + " Favorites");
 
-    }
+
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_TEXT, tweet.getUrl());
+                context.startActivity(Intent.createChooser(shareIntent, "Share link using"));
+
+            }
+            });
+
+
+        reply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {showEditDialog2();}
+
+            public void showEditDialog2(){
+                FragmentManager fmt = getSupportFragmentManager();
+                ComposeDialogFragment composeDialogFragment = ComposeDialogFragment.newInstance("Some Title");
+                composeDialogFragment.show(fmt,"fragment");
+            }
+        });
+
+        reply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {showEditDialog3();}
+
+            public void showEditDialog3() {
+                FragmentManager fmt = getSupportFragmentManager();
+                ComposeDialogFragment composeDialogFragment = ComposeDialogFragment.newInstance("Some Title");
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("userInfo", Parcels.wrap(TimelineActivity.user));
+                composeDialogFragment.setArguments(bundle);
+                composeDialogFragment.show(fmt,"fragment");
+                }
+        });
+
+        }
+
+
         @Override
         public boolean onOptionsItemSelected (MenuItem menuItem){
             Intent i = new Intent(DetailActivity.this, TimelineActivity.class);
@@ -138,4 +186,7 @@ public class DetailActivity extends AppCompatActivity {
             startActivityIfNeeded(i, 0);
             return true;
         }
+
+
+
     }
