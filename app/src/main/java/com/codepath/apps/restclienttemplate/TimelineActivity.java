@@ -232,18 +232,18 @@ public class TimelineActivity extends AppCompatActivity {
         inflater.inflate(R.menu.add_menu, menu);
         return true;
     }
-//    @Override
-//    public boolean onOptionsItemSelected (MenuItem item){
-//    if (item.getItemId() == R.id.ic_menu){
-//    // compose icon has been selected
-//       // Toast.makeText(this,"compose!",Toast.LENGTH_SHORT).show();
-//        // Navigate to the compose activity
-//        Intent intent = new Intent(this, ComposeActivity.class);
-//        startActivityForResult(intent,REQUEST_CODE);
-//        return true;
-//    }
-//    return super.onOptionsItemSelected(item);
-//    }
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item){
+    if (item.getItemId() == R.id.ic_menu){
+     //compose icon has been selected
+       // Toast.makeText(this,"compose!",Toast.LENGTH_SHORT).show();
+        // Navigate to the compose activity
+        Intent intent = new Intent(this, ComposeActivity.class);
+        startActivityForResult(intent,REQUEST_CODE);
+        return true;
+    }
+    return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

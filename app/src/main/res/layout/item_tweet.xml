@@ -77,24 +77,24 @@
         android:textSize="16sp"
         tools:text="16h" />
 
+
     <TextView
         android:id="@+id/reply"
         android:layout_width="50dp"
         android:layout_height="30dp"
         android:layout_below="@id/ivimage"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/ivprofileImage"
         android:drawablePadding="8dp"
         app:drawableLeftCompat="@drawable/reply" />
-
 
     <TextView
         android:id="@+id/ic_repeat"
         android:layout_width="50dp"
         android:layout_height="30dp"
         android:layout_below="@id/ivimage"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/reply"
         android:drawablePadding="8dp"
@@ -106,7 +106,7 @@
         android:layout_width="50dp"
         android:layout_height="30dp"
         android:layout_below="@id/ivimage"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/reply"
         android:drawablePadding="8dp"
@@ -117,7 +117,7 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_below="@id/ivimage"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/ic_repeat"
         android:drawablePadding="8dp"
@@ -129,7 +129,7 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_below="@id/ivimage"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/ic_repeat2"
         android:drawablePadding="8dp"
@@ -140,7 +140,7 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_below="@id/ivimage"
-        android:layout_marginStart="55dp"
+        android:layout_marginStart="45dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/ic_heart3"
         android:drawablePadding="8dp"

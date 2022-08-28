@@ -1,7 +1,11 @@
 package com.codepath.apps.restclienttemplate;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +36,7 @@ import okhttp3.Headers;
 public class ComposeDialogFragment extends DialogFragment {
     public  static final String TAG="ComposeDialogFragment";
     public  static final  int MAX_TWEET_LENGTH=140;
+    public static final String key ="keyboard";
     TwitterClient client;
     EditText etCompose;
     Button btnTweet;
@@ -75,7 +80,7 @@ public class ComposeDialogFragment extends DialogFragment {
 
         etCompose  = (EditText) view.findViewById(R.id.etCompose);
         btnTweet = (Button) view.findViewById(R.id.btnTweet);
-        image_button = (ImageButton) view.findViewById(R.id.imagebtn);
+        image_button = (ImageButton) view.findViewById(R.id.close);
         profile = (ImageView) view.findViewById(R.id.profile);
         nom =(TextView)view.findViewById(R.id.nom) ;
         username =(TextView)view.findViewById(R.id.username) ;
@@ -85,6 +90,8 @@ public class ComposeDialogFragment extends DialogFragment {
         String title = getArguments().getString("title", "Enter your text");
 
         getDialog().setTitle(title);
+        // Show soft keybord automatically and request focus to field
+        etCompose.requestFocus();
 
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         getDialog().getWindow().setLayout(800,900);
@@ -96,8 +103,8 @@ public class ComposeDialogFragment extends DialogFragment {
         User user= Parcels.unwrap(bundle.getParcelable("userInfo"));
 
 
-        nom.setText(user.name);
-        username.setText(user.screenName);
+//        nom.setText(user.name);
+//        username.setText("@" + user.screenName);
 
 
 
@@ -107,8 +114,20 @@ public class ComposeDialogFragment extends DialogFragment {
                 .transform(new CircleCrop())
                 .into(profile);
 
+        // draft
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String draft = preferences.getString(key,"");
 
+        if(draft.isEmpty()){
+            etCompose.setText(draft);
+        }
 
+        image_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                open();
+            }
+        });
 
         btnTweet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,8 +164,36 @@ public class ComposeDialogFragment extends DialogFragment {
                         Log.e(TAG,"onFailure to publish tweet",throwable);
                     }
                 });
+                dismiss();
             }
         });
+    }
+
+    public void open(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Save Draft");
+        builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface arg0, int arg1) {
+                Save();
+            }
+        });
+        builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dismiss();
+
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+    public void Save(){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("username",etCompose.getText().toString());
+        editor.commit();
+        dismiss();
     }
 
 

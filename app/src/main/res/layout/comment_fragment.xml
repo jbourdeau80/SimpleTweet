@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/profile"
         android:layout_marginTop="6dp"
+        android:layout_marginEnd="30dp"
         app:counterEnabled="true"
         app:counterMaxLength="10">
 
@@ -20,16 +21,19 @@
             android:id="@+id/etCompose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/profile"
+            android:layout_below="@id/username"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="239dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="54dp"
+            android:layout_marginEnd="0dp"
             android:ems="10"
             android:gravity="start|top"
-            android:hint="What's happening?"
+            android:hint="Reply to"
             android:inputType="textMultiLine"
-            android:minLines="5" />
+            tools:text="ScreanName"
+            android:minLines="2" />
+
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -39,14 +43,18 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/compteur"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#1DA1F2"
         android:text="TWEET" />
 
     <ImageView
         android:id="@+id/profile"
         android:layout_width="70dp"
         android:layout_height="70dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="50dp"
         android:layout_alignParentRight="true"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -54,23 +62,44 @@
         android:id="@+id/nom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_toStartOf="@+id/profile"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:text="Bourdeau Jennifer"
+        />
 
     <TextView
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/nom"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="20dp"
         android:layout_toStartOf="@+id/profile"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        tools:text="jbourdeau"
+        />
+
+    <TextView
+        android:id="@+id/ic_reply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="75dp"
+        android:drawablePadding="10dp"
+        app:drawableLeftCompat="@drawable/arrow_down"
+        tools:text="@string/reply" />
+
+    />
 
     <ImageButton
-        android:id="@+id/imagebtn"
+        android:id="@+id/close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_close" />

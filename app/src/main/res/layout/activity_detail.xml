@@ -133,10 +133,10 @@
         android:layout_height="30dp"
         android:layout_below="@id/divider1"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="8dp"
         android:layout_toEndOf="@id/reply"
         app:drawableLeftCompat="@drawable/repeat_variant"
-        tools:text=" 0"/>
+        tools:text=" 0  "/>
 
     <TextView
         android:id="@+id/ic_repeat2"
@@ -148,14 +148,14 @@
         android:layout_toEndOf="@id/reply"
         android:drawablePadding="8dp"
         app:drawableLeftCompat="@drawable/repeat"
-        tools:text=" 0 "/>
+        tools:text=" 0  "/>
 
     <TextView
         android:id="@+id/ic_heart2"
         android:layout_width="50dp"
         android:layout_height="30dp"
         android:layout_below="@id/divider1"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/ic_repeat2"
         android:drawablePadding="8dp"
@@ -167,7 +167,7 @@
         android:layout_width="50dp"
         android:layout_height="30dp"
         android:layout_below="@id/divider1"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/ic_repeat2"
         android:drawablePadding="8dp"
@@ -179,16 +179,13 @@
         android:layout_width="50dp"
         android:layout_height="30dp"
         android:layout_below="@id/divider1"
-        android:layout_marginStart="45dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/ic_heart3"
         android:drawablePadding="8dp"
         app:drawableLeftCompat="@drawable/share_variant"
 
         />
-
-
-
 
     <View
             android:id="@+id/divider1"
@@ -197,6 +194,47 @@
         android:layout_marginTop="3dp"
         android:layout_below="@id/retweet"
             android:background="?android:attr/listDivider" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/compteur"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/share"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="80dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="10">
+
+        <EditText
+            android:id="@+id/etCompose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/share"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="326dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Reply to"
+            android:inputType="textMultiLine"
+            tools:text="ScreanName"
+            android:minLines="5" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnTweet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/compteur"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#1DA1F2"
+        android:text="TWEET" />
 
 
 </RelativeLayout>

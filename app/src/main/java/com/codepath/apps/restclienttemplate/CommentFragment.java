@@ -19,9 +19,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
+import com.codepath.apps.restclienttemplate.models.User;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 
 import org.json.JSONException;
+import org.parceler.Parcels;
 
 import okhttp3.Headers;
 
@@ -37,6 +39,7 @@ public class CommentFragment extends DialogFragment {
     ImageView profile;
     TextView nom;
     TextView username;
+    TextView ic_reply;
 
     public CommentFragment (){}
 
@@ -44,13 +47,9 @@ public class CommentFragment extends DialogFragment {
     public static ComposeDialogFragment newInstance(String title) {
 
         ComposeDialogFragment frag = new ComposeDialogFragment();
-
         Bundle args = new Bundle();
-
         args.putString("title", title);
-
         frag.setArguments(args);
-
         return frag;
 
     }
@@ -67,15 +66,36 @@ public class CommentFragment extends DialogFragment {
 
         etCompose  = (EditText) view.findViewById(R.id.etCompose);
         btnTweet = (Button) view.findViewById(R.id.btnTweet);
-        image_button = (ImageButton) view.findViewById(R.id.imagebtn);
+        image_button = (ImageButton) view.findViewById(R.id.close);
         profile = (ImageView) view.findViewById(R.id.profile);
         nom =(TextView)view.findViewById(R.id.nom) ;
         username =(TextView)view.findViewById(R.id.username) ;
+        ic_reply =(TextView)view.findViewById(R.id.ic_reply);
+
+
+        Bundle bundle=getArguments();
+        Tweet tweet = Parcels.unwrap(bundle.getParcelable("tweets"));
+        User user= Parcels.unwrap(bundle.getParcelable("userInfo"));
+
+
+
+        // a retire eremetel nan compose dialogue la sil pa mache
+        nom.setText(user.name);
+        username.setText("@" + user.screenName);
+
 
         String title = getArguments().getString("title", "Enter your text");
 
         getDialog().setTitle(title);
+        // Show soft keybord automatically and request focus to field
+        etCompose.requestFocus();
 
+
+
+
+        etCompose.setHint("Reply to " + tweet.user.getName());
+
+        etCompose.setText("@"+ tweet.user.getScreenName());
 
 
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
@@ -83,9 +103,14 @@ public class CommentFragment extends DialogFragment {
 
 
 
+        image_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dismiss();
+            }
+        });
 
-
-
+        ic_reply.setText("reply to " + tweet.user.getScreenName() );
         btnTweet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,6 +138,7 @@ public class CommentFragment extends DialogFragment {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+                        dismiss();
 
                     }
 

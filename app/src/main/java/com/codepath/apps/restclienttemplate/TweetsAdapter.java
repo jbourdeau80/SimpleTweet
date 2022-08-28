@@ -148,12 +148,12 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
 
            Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
 //
-//           if(!tweet.media.getMediaUrl().isEmpty()) {
-//               ivimage.setVisibility(View.VISIBLE);
-//               Glide.with(context)
-//                       .load(tweet.media.getMediaUrl())
-//                       .transform(new RoundedCorners(50)).into(ivimage);
-//           }
+           if(!tweet.media.getMediaUrl().isEmpty()) {
+               ivimage.setVisibility(View.VISIBLE);
+               Glide.with(context)
+                       .load(tweet.media.getMediaUrl())
+                       .transform(new RoundedCorners(50)).into(ivimage);
+           }
 
             ic_heart.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -205,9 +205,10 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
            share.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View view) {
-                   Intent i = new Intent(Intent.ACTION_SENDTO);
-                   i.setType("text/plain");
-                   i.putExtra(Intent.EXTRA_TEXT,tweet.getUrl());
+                   Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                   shareIntent.setType("text/plain");
+                   shareIntent.putExtra(Intent.EXTRA_TEXT, tweet.getUrl());
+                   context.startActivity(Intent.createChooser(shareIntent, "Share link using"));
 
                }
            });
